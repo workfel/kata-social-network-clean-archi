@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "projects": {
+    "pets-survey": {
+      "projectType": "application",
+      "root": "apps/pets-survey",
+      "sourceRoot": "apps/pets-survey/src",
+      "prefix": "poc-clean-archi-state-management",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/pets-survey",
+            "index": "apps/pets-survey/src/index.html",
+            "main": "apps/pets-survey/src/main.ts",
+            "polyfills": "apps/pets-survey/src/polyfills.ts",
+            "tsConfig": "apps/pets-survey/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/pets-survey/src/favicon.ico",
+              "apps/pets-survey/src/assets"
+            ],
+            "styles": ["apps/pets-survey/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/pets-survey/src/environments/environment.ts",
+                  "with": "apps/pets-survey/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "pets-survey:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "pets-survey:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "pets-survey:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/pets-survey/src/**/*.ts",
+              "apps/pets-survey/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/pets-survey"],
+          "options": {
+            "jestConfig": "apps/pets-survey/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "pets-survey-e2e": {
+      "root": "apps/pets-survey-e2e",
+      "sourceRoot": "apps/pets-survey-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/pets-survey-e2e/cypress.json",
+            "tsConfig": "apps/pets-survey-e2e/tsconfig.e2e.json",
+            "devServerTarget": "pets-survey:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "pets-survey:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/pets-survey-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "pets-survey"
+}
