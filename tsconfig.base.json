@@ -14,7 +14,15 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@poc-clean-archi-state-management/survey": ["libs/survey/src/index.ts"],
+      "@poc-clean-archi-state-management/front-core": [
+        "libs/front-core/src/index.ts"
+      ],
+      "@poc-clean-archi-state-management/social-network": [
+        "libs/social-network/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

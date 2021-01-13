@@ -23,12 +23,18 @@
     }
   },
   "projects": {
-    "pets-survey": {
+    "front-core": {
       "tags": []
     },
-    "pets-survey-e2e": {
+    "social-network": {
+      "tags": []
+    },
+    "digikom": {
+      "tags": []
+    },
+    "digikom-e2e": {
       "tags": [],
-      "implicitDependencies": ["pets-survey"]
+      "implicitDependencies": ["digikom"]
     }
   }
 }

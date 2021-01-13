@@ -1,34 +1,76 @@
 {
   "version": 1,
   "projects": {
-    "pets-survey": {
+    "front-core": {
+      "root": "libs/front-core",
+      "sourceRoot": "libs/front-core/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/front-core/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/front-core"],
+          "options": {
+            "jestConfig": "libs/front-core/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "social-network": {
+      "root": "libs/social-network",
+      "sourceRoot": "libs/social-network/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/social-network/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/social-network"],
+          "options": {
+            "jestConfig": "libs/social-network/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "digikom": {
       "projectType": "application",
-      "root": "apps/pets-survey",
-      "sourceRoot": "apps/pets-survey/src",
+      "root": "apps/digikom",
+      "sourceRoot": "apps/digikom/src",
       "prefix": "poc-clean-archi-state-management",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/pets-survey",
-            "index": "apps/pets-survey/src/index.html",
-            "main": "apps/pets-survey/src/main.ts",
-            "polyfills": "apps/pets-survey/src/polyfills.ts",
-            "tsConfig": "apps/pets-survey/tsconfig.app.json",
+            "outputPath": "dist/apps/digikom",
+            "index": "apps/digikom/src/index.html",
+            "main": "apps/digikom/src/main.ts",
+            "polyfills": "apps/digikom/src/polyfills.ts",
+            "tsConfig": "apps/digikom/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "apps/pets-survey/src/favicon.ico",
-              "apps/pets-survey/src/assets"
+              "apps/digikom/src/favicon.ico",
+              "apps/digikom/src/assets"
             ],
-            "styles": ["apps/pets-survey/src/styles.scss"],
+            "styles": ["apps/digikom/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/pets-survey/src/environments/environment.ts",
-                  "with": "apps/pets-survey/src/environments/environment.prod.ts"
+                  "replace": "apps/digikom/src/environments/environment.ts",
+                  "with": "apps/digikom/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -56,61 +98,61 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "pets-survey:build"
+            "browserTarget": "digikom:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "pets-survey:build:production"
+              "browserTarget": "digikom:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pets-survey:build"
+            "browserTarget": "digikom:build"
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "apps/pets-survey/src/**/*.ts",
-              "apps/pets-survey/src/**/*.html"
+              "apps/digikom/src/**/*.ts",
+              "apps/digikom/src/**/*.html"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/pets-survey"],
+          "outputs": ["coverage/apps/digikom"],
           "options": {
-            "jestConfig": "apps/pets-survey/jest.config.js",
+            "jestConfig": "apps/digikom/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "pets-survey-e2e": {
-      "root": "apps/pets-survey-e2e",
-      "sourceRoot": "apps/pets-survey-e2e/src",
+    "digikom-e2e": {
+      "root": "apps/digikom-e2e",
+      "sourceRoot": "apps/digikom-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/pets-survey-e2e/cypress.json",
-            "tsConfig": "apps/pets-survey-e2e/tsconfig.e2e.json",
-            "devServerTarget": "pets-survey:serve"
+            "cypressConfig": "apps/digikom-e2e/cypress.json",
+            "tsConfig": "apps/digikom-e2e/tsconfig.e2e.json",
+            "devServerTarget": "digikom:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "pets-survey:serve:production"
+              "devServerTarget": "digikom:serve:production"
             }
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/pets-survey-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": ["apps/digikom-e2e/**/*.{js,ts}"]
           }
         }
       }
