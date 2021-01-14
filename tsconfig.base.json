@@ -21,6 +21,15 @@
       ],
       "@poc-clean-archi-state-management/social-network": [
         "libs/social-network/src/index.ts"
+      ],
+      "@poc-clean-archi-state-management/social-network-apollo": [
+        "libs/social-network-apollo/src/index.ts"
+      ],
+      "@poc-clean-archi-state-management/front-core-apollo": [
+        "libs/front-core-apollo/src/index.ts"
+      ],
+      "@poc-clean-archi-state-management/social-network-core": [
+        "libs/social-network-core/src/index.ts"
       ]
     }
   },

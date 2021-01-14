@@ -1,14 +1,9 @@
 {
   "npmScope": "poc-clean-archi-state-management",
-  "affected": {
-    "defaultBase": "master"
-  },
+  "affected": { "defaultBase": "master" },
   "implicitDependencies": {
     "angular.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
@@ -17,24 +12,16 @@
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
-      }
+      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
     }
   },
   "projects": {
-    "front-core": {
-      "tags": []
-    },
-    "social-network": {
-      "tags": []
-    },
-    "digikom": {
-      "tags": []
-    },
-    "digikom-e2e": {
-      "tags": [],
-      "implicitDependencies": ["digikom"]
-    }
+    "front-core": { "tags": [] },
+    "social-network": { "tags": [] },
+    "digikom": { "tags": [] },
+    "digikom-e2e": { "tags": [], "implicitDependencies": ["digikom"] },
+    "social-network-apollo": { "tags": [] },
+    "front-core-apollo": { "tags": [] },
+    "social-network-core": { "tags": [] }
   }
 }

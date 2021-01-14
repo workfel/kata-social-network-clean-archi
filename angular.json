@@ -156,6 +156,69 @@
           }
         }
       }
+    },
+    "social-network-apollo": {
+      "root": "libs/social-network-apollo",
+      "sourceRoot": "libs/social-network-apollo/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/social-network-apollo/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/social-network-apollo"],
+          "options": {
+            "jestConfig": "libs/social-network-apollo/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "front-core-apollo": {
+      "root": "libs/front-core-apollo",
+      "sourceRoot": "libs/front-core-apollo/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/front-core-apollo/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/front-core-apollo"],
+          "options": {
+            "jestConfig": "libs/front-core-apollo/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "social-network-core": {
+      "root": "libs/social-network-core",
+      "sourceRoot": "libs/social-network-core/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/social-network-core/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/social-network-core"],
+          "options": {
+            "jestConfig": "libs/social-network-core/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

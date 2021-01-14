@@ -1,10 +1,10 @@
-import { User } from '../../domain/user';
 import { ActionsObservable, ofType, StateObservable } from 'redux-observable';
 import * as actionCreators from './publish-message-to-timeline.actions';
 import { TimelineState } from '../../../redux/timeline.state';
 import { TimelineDependencies } from '../../../redux/timeline.dependencies';
 import { Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+import { User } from '@poc-clean-archi-state-management/social-network-core';
 
 export interface PublishMessageToTimelineUseCaseRequest {
   message: string;
@@ -12,9 +12,9 @@ export interface PublishMessageToTimelineUseCaseRequest {
 }
 
 export class PublishMessageToTimelineUseCase {
-
-
-  execute(action$: ActionsObservable<actionCreators.Actions>, state$: StateObservable<TimelineState>, { timelineGateway }: TimelineDependencies): Observable<actionCreators.Actions> {
+  execute(action$: ActionsObservable<actionCreators.Actions>,
+          state$: StateObservable<TimelineState>,
+          { timelineGateway }: TimelineDependencies): Observable<actionCreators.Actions> {
     return action$.pipe(
       ofType<actionCreators.Actions,
         ReturnType<typeof actionCreators.Actions.publishMessage>>(actionCreators.PUBLISH_TIMELINE_MESSAGE),

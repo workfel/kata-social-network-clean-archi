@@ -22,18 +22,18 @@ describe('Publish a message to personnal timeline', () => {
     initStore(timelineGateway);
   });
 
-  test('Should not publish a empty message', async () => {
-    const message = '';
-    store.dispatch(actionsCreators.Actions.publishMessage(message));
-    expect(store.getState().timeline.publishError).toBe('Message cannot be empty');
-  });
-
   test('Should publish a message', async () => {
     const message = 'message';
     store.dispatch(actionsCreators.Actions.publishMessage(message));
     expect(store.getState().timeline.messages).toContain('message');
   });
 
+
+  test('Should not publish a empty message', async () => {
+    const message = '';
+    store.dispatch(actionsCreators.Actions.publishMessage(message));
+    expect(store.getState().timeline.publishError).toBe('Message cannot be empty');
+  });
 
   const initStore = (timelineGateway: TimelineGateway) => {
     store = configureStore({

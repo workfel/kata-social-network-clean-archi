@@ -39,6 +39,7 @@
     "@angular/router": "^11.0.0",
     "@apollo/client": "^3.3.6",
     "@nrwl/angular": "11.1.2",
+    "graphql": "^15.4.0",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-observable": "^1.2.0",

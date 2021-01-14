@@ -3,5 +3,4 @@ export interface TimelineState {
     publishError: string;
     messages: string[];
   }
-
 }
