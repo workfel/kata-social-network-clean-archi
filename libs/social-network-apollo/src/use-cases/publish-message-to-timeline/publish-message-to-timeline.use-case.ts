@@ -21,15 +21,33 @@ export class PublishMessageToTimelineUseCase {
       return false;
     }
     const timeline = this._state.timelineVar();
+    timeline.loading = true;
+    this._state.timelineVar({
+      ...timeline,
+      loading: true,
+      publishErrors : 'mdidh'
+    });
     await this._timelineGateway.publishMessage(message);
 
 
-    timeline.messages.push({
-      content: message,
+    const newMsg = {
+      content: `${user.id} : ${message}`,
       id: Date.now().toString(),
       user
+    };
+    // timeline.messages = [
+    //   ...timeline.messages,
+    //   timeline.messages.push({
+    //     content: `${user.id} : ${message}`,
+    //     id: Date.now().toString(),
+    //     user
+    //   })];
+    timeline.loading = false;
+    timeline.publishErrors = 'dsksksks';
+    this._state.timelineVar({
+      ...timeline,
+      messages: [...timeline.messages, newMsg]
     });
-    this._state.timelineVar(timeline);
     return true;
   }
 

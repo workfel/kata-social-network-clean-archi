@@ -1,0 +1,53 @@
+<!--LOADING {{loading}}-->
+<!--<hr>-->
+
+<!--publishErrors : {{publishErrors}}-->
+<!--hr-->
+<!--<div>-->
+<!--  <div>-->
+<!--    <input type="text" #message>-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <button (click)="oonSendMsg(message.value)">Send</button>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<hr>-->
+
+<!--<div>-->
+<!--  <ul>-->
+<!--    <li *ngFor="let msg of messages">-->
+<!--      {{msg.content}}-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--</div>-->
+
+<div *ngIf="timeline$ | async as timeline">
+
+  LOADING {{timeline.loading}}
+  <hr>
+
+  publishErrors : {{timeline.publishErrors}}
+  <hr>
+  <div>
+    <div>
+      <input type="text" #message>
+    </div>
+    <div>
+      <button (click)="oonSendMsg(message.value)">Send</button>
+    </div>
+  </div>
+
+  <hr>
+
+  <div>
+    <ul>
+      <li *ngFor="let msg of timeline.messages">
+        {{msg.content}}
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<router-outlet></router-outlet>

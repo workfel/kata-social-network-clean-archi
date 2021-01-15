@@ -9,12 +9,16 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/front-core/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/front-core/**/*.ts"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/front-core"],
+          "outputs": [
+            "coverage/libs/front-core"
+          ],
           "options": {
             "jestConfig": "libs/front-core/jest.config.js",
             "passWithNoTests": true
@@ -30,12 +34,16 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/social-network/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/social-network/**/*.ts"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/social-network"],
+          "outputs": [
+            "coverage/libs/social-network"
+          ],
           "options": {
             "jestConfig": "libs/social-network/jest.config.js",
             "passWithNoTests": true
@@ -62,7 +70,9 @@
               "apps/digikom/src/favicon.ico",
               "apps/digikom/src/assets"
             ],
-            "styles": ["apps/digikom/src/styles.scss"],
+            "styles": [
+              "apps/digikom/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -123,7 +133,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/digikom"],
+          "outputs": [
+            "coverage/apps/digikom"
+          ],
           "options": {
             "jestConfig": "apps/digikom/jest.config.js",
             "passWithNoTests": true
@@ -152,7 +164,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/digikom-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/digikom-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -165,12 +179,16 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/social-network-apollo/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/social-network-apollo/**/*.ts"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/social-network-apollo"],
+          "outputs": [
+            "coverage/libs/social-network-apollo"
+          ],
           "options": {
             "jestConfig": "libs/social-network-apollo/jest.config.js",
             "passWithNoTests": true
@@ -186,12 +204,16 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/front-core-apollo/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/front-core-apollo/**/*.ts"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/front-core-apollo"],
+          "outputs": [
+            "coverage/libs/front-core-apollo"
+          ],
           "options": {
             "jestConfig": "libs/front-core-apollo/jest.config.js",
             "passWithNoTests": true
@@ -207,12 +229,16 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/social-network-core/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/social-network-core/**/*.ts"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/social-network-core"],
+          "outputs": [
+            "coverage/libs/social-network-core"
+          ],
           "options": {
             "jestConfig": "libs/social-network-core/jest.config.js",
             "passWithNoTests": true
@@ -222,7 +248,8 @@
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@nrwl/angular",
+    "analytics": false
   },
   "schematics": {
     "@nrwl/angular": {

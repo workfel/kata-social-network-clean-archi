@@ -8,7 +8,7 @@ export const cache: InMemoryCache = new InMemoryCache({
       fields: {
         timeline: {
           read() {
-            return timelineVar;
+            return timelineVar();
           }
         },
         messages: {
@@ -21,8 +21,15 @@ export const cache: InMemoryCache = new InMemoryCache({
   }
 });
 const initTimeline: Timeline = {
-  messages: [],
-  publishErrors: ''
+  messages: [{
+    content: 'sdsdsd',
+    user: {
+      id: ''
+    },
+    id: '1'
+  }],
+  publishErrors: '',
+  loading: false
 };
 
 export const timelineVar: ReactiveVar<Timeline> = makeVar<Timeline>(
