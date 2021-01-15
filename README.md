@@ -15,6 +15,12 @@ https://kata-log.rocks/social-network-kata
     
 
 
+# Resume
+
+[Clean archi for Frontend](https://slides.com/johanpujol-1/clean-archi-front-state-management)
+
+
+
 ## REDUX
 
 #### PROs
