@@ -30,6 +30,9 @@
       ],
       "@poc-clean-archi-state-management/social-network-core": [
         "libs/social-network-core/src/index.ts"
+      ],
+      "@poc-clean-archi-state-management/social-network-redux": [
+        "libs/social-network-redux/src/index.ts"
       ]
     }
   },

@@ -8,5 +8,6 @@ module.exports = {
     '<rootDir>/libs/social-network-apollo',
     '<rootDir>/libs/front-core-apollo',
     '<rootDir>/libs/social-network-core',
+    '<rootDir>/libs/social-network-redux',
   ],
 };

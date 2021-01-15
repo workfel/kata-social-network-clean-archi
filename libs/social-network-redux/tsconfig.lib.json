@@ -5,8 +5,5 @@
     "types": []
   },
   "exclude": ["**/*.spec.ts"],
-  "include": [
-    "**/*.ts",
-    "../../node_modules/@apollo/client/utilities/observables/Observable.d.ts"
-  ]
+  "include": ["**/*.ts"]
 }

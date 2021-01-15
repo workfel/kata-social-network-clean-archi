@@ -17,11 +17,11 @@
   },
   "projects": {
     "front-core": { "tags": [] },
-    "social-network": { "tags": [] },
     "digikom": { "tags": [] },
     "digikom-e2e": { "tags": [], "implicitDependencies": ["digikom"] },
     "social-network-apollo": { "tags": [] },
     "front-core-apollo": { "tags": [] },
-    "social-network-core": { "tags": [] }
+    "social-network-core": { "tags": [] },
+    "social-network-redux": { "tags": [] }
   }
 }
