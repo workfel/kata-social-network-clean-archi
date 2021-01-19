@@ -7,6 +7,16 @@ import {
 import { TimelineGateway } from '../../gateways/timeline-gateway';
 import { InMemoryTimelineGateway } from '../../adapters/secondary/gateways/in-memory-timeline-gateway';
 
+const GET_TIMELINE = gql`
+  query GetTimeline {
+    timeline @client {
+      messages  {
+        content
+      }
+      loading
+    }
+  }
+`;
 describe('Publish message to Timeline', () => {
   const client = new ApolloClient({
     cache,
@@ -22,19 +32,28 @@ describe('Publish message to Timeline', () => {
 
   test('Should not publish empty message', async () => {
     const useCase = new PublishMessageToTimelineUseCase(socialNetworkState, timelineGateway);
-    const message: PublishMessageToTimelineUseCaseRequest = { message: '', user: { id: 'John doe' } };
+    const message: PublishMessageToTimelineUseCaseRequest = { message: '', user: { name: 'John doe' } };
     const response = await useCase.execute(message);
     expect(response).toBe(false);
     expect(timelineVar().messages.length).toBe(0);
+    expect(timelineVar().publishErrors).toEqual('msg_empty');
   });
 
   test('Should post a message as John doe', async () => {
     const useCase = new PublishMessageToTimelineUseCase(socialNetworkState, timelineGateway);
-    const message: PublishMessageToTimelineUseCaseRequest = { message: 'Salut toi', user: { id: 'John doe' } };
+    const message: PublishMessageToTimelineUseCaseRequest = { message: 'Salut toi', user: { name: 'John doe' } };
     const response = await useCase.execute(message);
     expect(response).toBe(true);
     expect(timelineVar().messages.length).toBe(1);
-    expect(timelineVar().messages).toContain({ content: 'Salut toi' });
+    expect(timelineVar().messages[0].content).toContain('Salut toi');
+    expect(timelineVar().messages[0].user.name).toContain('John doe');
+  });
+  test('Should not post a message as Unknow user', async () => {
+    const useCase = new PublishMessageToTimelineUseCase(socialNetworkState, timelineGateway);
+    const message: PublishMessageToTimelineUseCaseRequest = { message: 'Salut toi', user: { name: '' } };
+    const response = await useCase.execute(message);
+    expect(response).toBe(false);
+    expect(timelineVar().publishErrors).toContain('user_empty');
   });
 
 });

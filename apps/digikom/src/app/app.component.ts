@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client/core';
+import { gql } from '@apollo/client/core';
 import {
   InMemoryTimelineGateway,
   PublishMessageToTimelineUseCase,
-  SocialNetworkStateReactive,
-  Timeline
+  SocialNetworkStateReactive
 } from '@poc-clean-archi-state-management/social-network-apollo';
 import { Apollo } from 'apollo-angular';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { TimelineProps } from '@poc-clean-archi-state-management/social-network-core';
 
 const GET_ALL_MSG = gql`
   query GetAllMessages {
@@ -32,13 +32,13 @@ export class AppComponent implements OnInit {
   socialNetworkState = new SocialNetworkStateReactive();
   timelineGateway = new InMemoryTimelineGateway();
   useCase = new PublishMessageToTimelineUseCase(this.socialNetworkState, this.timelineGateway);
-  timeline$: Observable<Timeline>;
+  timeline$: Observable<TimelineProps>;
 
   constructor(private apollo: Apollo) {
   }
 
   ngOnInit(): void {
-    this.timeline$ = this.apollo.watchQuery<{ timeline: Timeline }>({
+    this.timeline$ = this.apollo.watchQuery<{ timeline: TimelineProps }>({
       query: GET_ALL_MSG
     }).valueChanges.pipe((map(result => result.data.timeline)));
   }
@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
     this.useCase.execute({
       message,
       user: {
-        id: 'isee'
+        name: 'isee'
       }
     });
   }

@@ -1,6 +1,5 @@
 import { InMemoryCache, makeVar, ReactiveVar } from '@apollo/client/core';
-import { Message, Messages } from '../../../social-network-core/src/domain/message';
-import { Timeline } from './timeline';
+import { TimelineProps } from '@poc-clean-archi-state-management/social-network-core';
 
 export const cache: InMemoryCache = new InMemoryCache({
   typePolicies: {
@@ -10,54 +9,26 @@ export const cache: InMemoryCache = new InMemoryCache({
           read() {
             return timelineVar();
           }
-        },
-        messages: {
-          read() {
-            return messagesVar();
-          }
         }
       }
     }
   }
 });
-const initTimeline: Timeline = {
-  messages: [{
-    content: 'sdsdsd',
-    user: {
-      id: ''
-    },
-    id: '1'
-  }],
+const initTimeline: TimelineProps = {
+  messages: [],
   publishErrors: '',
   loading: false
 };
 
-export const timelineVar: ReactiveVar<Timeline> = makeVar<Timeline>(
+export const timelineVar: ReactiveVar<TimelineProps> = makeVar<TimelineProps>(
   initTimeline
-);
-
-const msgInitialValue: Messages = [
-  {
-    id: '1',
-    content: 'Use Apollo Client 3',
-    user: {
-      id: 'user1'
-    }
-  }
-];
-
-
-export const messagesVar: ReactiveVar<Messages> = makeVar<Messages>(
-  msgInitialValue
 );
 
 
 export interface SocialNetworkState {
-  messagesVar: ReactiveVar<Messages>,
-  timelineVar: ReactiveVar<Timeline>
+  timelineVar: ReactiveVar<TimelineProps>
 }
 
 export class SocialNetworkStateReactive implements SocialNetworkState {
-  messagesVar = messagesVar;
   timelineVar = timelineVar;
 }

@@ -4,11 +4,11 @@ import { TimelineState } from '../../../redux/timeline.state';
 import { TimelineDependencies } from '../../../redux/timeline.dependencies';
 import { Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { User } from '@poc-clean-archi-state-management/social-network-core';
+import { UserProps } from '@poc-clean-archi-state-management/social-network-core';
 
 export interface PublishMessageToTimelineUseCaseRequest {
   message: string;
-  user: User;
+  user: UserProps;
 }
 
 export class PublishMessageToTimelineUseCase {

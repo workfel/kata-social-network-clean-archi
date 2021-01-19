@@ -1,4 +1,4 @@
-import { User } from '@poc-clean-archi-state-management/social-network-core';
+import { Message, Timeline, UserProps } from '@poc-clean-archi-state-management/social-network-core';
 import { SocialNetworkState } from '../../domain/cache';
 import { TimelineGateway } from '../../gateways/timeline-gateway';
 
@@ -7,7 +7,7 @@ export type PublishMessageToTimelineUseCaseResponse = boolean;
 
 export interface PublishMessageToTimelineUseCaseRequest {
   message: string;
-  user: User;
+  user: UserProps;
 }
 
 export class PublishMessageToTimelineUseCase {
@@ -17,36 +17,36 @@ export class PublishMessageToTimelineUseCase {
 
   async execute({ message, user }: PublishMessageToTimelineUseCaseRequest):
     Promise<PublishMessageToTimelineUseCaseResponse> {
-    if (message == '') {
+    const timelineVar = this._state.timelineVar();
+    const timeline = new Timeline(timelineVar);
+    if (!timeline.isMessageValid(message)) {
+      this._state.timelineVar({
+        ...timelineVar,
+        publishErrors: timeline.getMessageError(message)
+      });
       return false;
     }
-    const timeline = this._state.timelineVar();
-    timeline.loading = true;
+
+    if (user.name === '') {
+      this._state.timelineVar({
+        ...timelineVar,
+        publishErrors: 'user_empty'
+      });
+      return false;
+    }
+
     this._state.timelineVar({
-      ...timeline,
-      loading: true,
-      publishErrors : 'mdidh'
+      ...timelineVar,
+      loading: true
     });
     await this._timelineGateway.publishMessage(message);
 
-
-    const newMsg = {
-      content: `${user.id} : ${message}`,
-      id: Date.now().toString(),
-      user
-    };
-    // timeline.messages = [
-    //   ...timeline.messages,
-    //   timeline.messages.push({
-    //     content: `${user.id} : ${message}`,
-    //     id: Date.now().toString(),
-    //     user
-    //   })];
-    timeline.loading = false;
-    timeline.publishErrors = 'dsksksks';
+    const newMsg = Message.create(user, message);
+    timeline.addMessage(newMsg);
+    timelineVar.loading = false;
     this._state.timelineVar({
-      ...timeline,
-      messages: [...timeline.messages, newMsg]
+      ...timelineVar,
+      messages: timeline.getMessages()
     });
     return true;
   }
