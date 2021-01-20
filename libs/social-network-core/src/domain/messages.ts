@@ -1,3 +1,3 @@
-import { MessageProps } from '@poc-clean-archi-state-management/social-network-core';
+import { Message, MessageProps } from '@poc-clean-archi-state-management/social-network-core';
 
-export type Messages = MessageProps[];
+export type Messages = Message[];

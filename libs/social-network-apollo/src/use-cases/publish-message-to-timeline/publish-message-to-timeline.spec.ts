@@ -18,15 +18,17 @@ const GET_TIMELINE = gql`
   }
 `;
 describe('Publish message to Timeline', () => {
-  const client = new ApolloClient({
-    cache,
-    connectToDevTools: true
-  });
+  let client: ApolloClient<any>;
   let socialNetworkState: SocialNetworkState;
   let timelineGateway: TimelineGateway;
   beforeEach(() => {
     socialNetworkState = new SocialNetworkStateReactive();
     timelineGateway = new InMemoryTimelineGateway();
+    const cacheClient = cache;
+    client = new ApolloClient({
+      cache: cacheClient,
+      connectToDevTools: true
+    });
   });
 
 
@@ -55,5 +57,4 @@ describe('Publish message to Timeline', () => {
     expect(response).toBe(false);
     expect(timelineVar().publishErrors).toContain('user_empty');
   });
-
 });

@@ -10,8 +10,7 @@ export interface TimelineProps {
 
 export class Timeline {
 
-  constructor(private readonly props: TimelineProps) {
-
+  constructor(private props: TimelineProps) {
   }
 
 
@@ -27,7 +26,7 @@ export class Timeline {
   }
 
   addMessage(message: Message) {
-    this.props.messages.push(message);
+    this.props.messages = [...this.props.messages, message];
   }
 
   getMessages(): Messages {

@@ -1,7 +1,7 @@
 import { InMemoryCache, makeVar, ReactiveVar } from '@apollo/client/core';
 import { TimelineProps } from '@poc-clean-archi-state-management/social-network-core';
 
-export const cache: InMemoryCache = new InMemoryCache({
+export const cache = new InMemoryCache({
   typePolicies: {
     Query: {
       fields: {

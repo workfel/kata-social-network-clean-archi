@@ -6,7 +6,7 @@ import {
   SocialNetworkStateReactive
 } from '@poc-clean-archi-state-management/social-network-apollo';
 import { Apollo } from 'apollo-angular';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { TimelineProps } from '@poc-clean-archi-state-management/social-network-core';
 
@@ -40,7 +40,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.timeline$ = this.apollo.watchQuery<{ timeline: TimelineProps }>({
       query: GET_ALL_MSG
-    }).valueChanges.pipe((map(result => result.data.timeline)));
+    }).valueChanges.pipe(
+      map(result => result.data.timeline));
   }
 
   oonSendMsg(message: string) {
